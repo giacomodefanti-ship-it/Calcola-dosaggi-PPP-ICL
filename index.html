@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <!-- Privacy-friendly analytics by Plausible -->
@@ -36,6 +36,9 @@
         .metric-val-orange { font-weight: bold; color: #d97706; font-size: 0.85rem; }
         .metric-val-gray { font-weight: 600; color: #374151; font-size: 0.85rem; }
         .footer-note { font-size: 0.7rem; color: #6b7280; line-height: 1.4; margin-top: 20px; border-top: 1px solid #e5e7eb; padding-top: 16px; }
+        .btn-link-container { text-align: center; margin-top: 16px; margin-bottom: 16px; }
+        .btn-standard { display: inline-block; background-color: #047857; color: #ffffff; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: background-color 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .btn-standard:hover { background-color: #065f46; }
     </style>
 </head>
 <body>
@@ -66,6 +69,13 @@
         </div>
 
         <div id="categoriesContainer"></div>
+
+        <!-- PULSANTE POSIZIONATO SUBITO DOPO LE TABELLE -->
+        <div class="btn-link-container">
+            <a href="https://giacomodefanti-ship-it.github.io/icl-smartTurf-Integrated-Liquid/" class="btn-standard" target="_blank" rel="noopener noreferrer">
+                Vai alle Miscele Standard
+            </a>
+        </div>
 
         <div class="footer-note">
             <p><strong>Nota operativa:</strong> I calcoli commerciali stimano i flaconi/taniche interi necessari per coprire l'intera area senza subire interruzioni.</p>
@@ -263,7 +273,6 @@
 
                     if (!netElem || !waterElem || !packsElem) return;
 
-                    // 1. Calcolo standard basato sui mq inseriti
                     let totalProduct = (prod.doseHa / 10000) * mq;
                     let formattedNet = "";
 
@@ -304,7 +313,6 @@
 
                     netElem.innerText = formattedNet;
 
-                    // 2. Se è inserito il volume della botte (e il prodotto è liquido), calcoliamo la copertura aggiuntiva
                     if (tankVol !== null && tankVol > 0 && cat.type !== 'granular_app' && prod.waterHa) {
                         let coveredMq = (tankVol / prod.waterHa) * 10000;
                         let productForTank = (prod.doseHa / 10000) * coveredMq;
