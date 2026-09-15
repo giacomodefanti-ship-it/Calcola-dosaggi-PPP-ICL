@@ -2,11 +2,11 @@
 <html lang="it">
 <head>
     <!-- Privacy-friendly analytics by Plausible -->
-<script async src="https://plausible.io/js/pa-AwRpzpoAt81arn1WkPFvZ.js"></script>
-<script>
-  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
-</script>
+    <script async src="https://plausible.io/js/pa-AwRpzpoAt81arn1WkPFvZ.js"></script>
+    <script>
+      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+      plausible.init();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calcolatore Prodotti Fitosanitari e Liquidi ICL</title>
@@ -15,10 +15,11 @@
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f3f4f6; color: #1f2937; margin: 0; padding: 12px; }
         .wrapper { width: 100%; max-width: 600px; margin: 0 auto; }
         .card { background: #ffffff; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 16px; overflow: hidden; border: 1px solid #e5e7eb; }
-        .header-main { background: #ffffff; border-top: 4px solid #047857; padding: 16px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 16px; }
+        .header-container { background: #ffffff; border-top: 4px solid #047857; padding: 16px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 16px; text-align: center; }
+        .header-logo { height: 40px; background: white; padding: 4px; border-radius: 4px; margin-bottom: 8px; }
         .header-title { font-size: 1.15rem; font-weight: 700; color: #111827; margin: 0 0 4px 0; }
-        .header-sub { font-size: 0.75rem; color: #6b7280; margin: 0 0 12px 0; }
-        .input-box { background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+        .header-sub { font-size: 0.75rem; color: #6b7280; margin: 0 0 16px 0; }
+        .input-box { background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; text-align: left; }
         .input-box label { font-weight: 600; font-size: 0.85rem; color: #064e3b; }
         .input-box input, .input-box select { width: 100%; background: #ffffff; border: 1px solid #6ee7b7; border-radius: 6px; padding: 10px; text-align: center; font-weight: bold; color: #047857; font-size: 1.1rem; outline: none; }
         .input-box select { text-align-last: center; }
@@ -36,7 +37,7 @@
         .metric-val-orange { font-weight: bold; color: #d97706; font-size: 0.85rem; }
         .metric-val-gray { font-weight: 600; color: #374151; font-size: 0.85rem; }
         .footer-note { font-size: 0.7rem; color: #6b7280; line-height: 1.4; margin-top: 20px; border-top: 1px solid #e5e7eb; padding-top: 16px; }
-        .btn-link-container { text-align: center; margin-top: 16px; margin-bottom: 16px; }
+        .btn-link-container { text-align: center; margin: 16px 0; }
         .btn-standard { display: inline-block; background-color: #047857; color: #ffffff; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: background-color 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .btn-standard:hover { background-color: #065f46; }
     </style>
@@ -44,19 +45,19 @@
 <body>
 
     <div class="wrapper">
-        <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 8px; flex-wrap: wrap;">
-            <img src="https://icl-growingsolutions.com/favicon.ico" alt="ICL Logo" style="height: 40px; background: white; padding: 4px; border-radius: 4px;" id="iclLogo">
+        <header class="header-container">
+            <img src="https://icl-growingsolutions.com/favicon.ico" alt="ICL Logo" class="header-logo" width="40" height="40" id="iclLogo">
             <h1 class="header-title">Calcolatore Prodotti Fitosanitari e Liquidi ICL</h1>
             <p class="header-sub">Catalogo Integrato - Schemi applicativi e dosaggi standard</p>
             
             <div class="input-box">
                 <label for="mqInput">Superficie da trattare (mq):</label>
-                <input type="number" id="mqInput" value="500" min="1" oninput="calculateDosages()">
+                <input type="number" id="mqInput" value="500" min="1" inputmode="decimal" oninput="calculateDosages()">
             </div>
 
             <div class="input-box">
                 <label for="tankInput">Volume acqua della botte (L) - Opzionale:</label>
-                <input type="number" id="tankInput" value="" placeholder="Es. 300 o 600" min="0" oninput="calculateDosages()">
+                <input type="number" id="tankInput" value="" placeholder="Es. 300 o 600" min="0" inputmode="decimal" oninput="calculateDosages()">
             </div>
 
             <div class="input-box">
@@ -67,11 +68,10 @@
             </div>
 
             <span style="font-size: 10px; color: #9ca3af; margin-top: 6px; display: block; font-style: italic;">Aggiornamento in tempo reale dei dosaggi e della copertura botte.</span>
-        </div>
+        </header>
 
-        <div id="categoriesContainer"></div>
+        <main id="categoriesContainer"></main>
 
-        <!-- PULSANTE POSIZIONATO SUBITO DOPO LE TABELLE -->
         <div class="btn-link-container">
             <a href="https://giacomodefanti-ship-it.github.io/icl-smartTurf-Integrated-Liquid/" class="btn-standard" target="_blank" rel="noopener noreferrer">
                 Vai alle Miscele Standard
@@ -90,18 +90,18 @@
             </a>
         </div>
 
-                <div class="btn-link-container">
+        <div class="btn-link-container">
             <a href="https://giacomodefanti-ship-it.github.io/TabellaComposizioniTurf/" class="btn-standard" target="_blank" rel="noopener noreferrer">
                 Vai alla tabella composizioni concimi e sementi
             </a>
         </div>
 
-        <div class="footer-note">
+        <footer class="footer-note">
             <p><strong>Nota operativa:</strong> I calcoli commerciali stimano i flaconi/taniche interi necessari per coprire l'intera area senza subire interruzioni.</p>
             <p><strong>Avvertenza:</strong> Rispettare rigorosamente l'ordine di miscelazione nel serbatoio quando si accoppiano più prodotti liquidi diversi.</p>
             <p style="font-style: italic;">N.B. Considerando che le circostanze d'uso possono variare e che l'uso dei prodotti in questione non avviene sotto il diretto controllo, ICL non è responsabile per eventuali risultati negativi non imputabili al prodotto.</p>
             <p style="text-align: right; font-weight: 600; color: #4b5563; margin-top: 8px;">Made by G. Defanti - Resp Tecnico Golf ICL Italia</p>
-        </div>
+        </footer>
     </div>
 
     <script>
@@ -110,81 +110,81 @@
                 title: "AGROFARMACI: FUNGICIDI LIQUIDI / WP",
                 type: "liquid",
                 products: [
-                    { name: "Heritage (Azoxystrobin)", doseHa: 0.5, waterHa: 450, descDose: "0.5 kg/ha (0.05 g/mq) in 300-600 l d'acqua", pack: "Flacone 100g", isKg: true },
-                    { name: "Instrata Elite (Fludioxonil + Difenconazolo)", doseHa: 3.0, waterHa: 425, descDose: "3 L/ha (0.3 ml/mq) in 250-600 l d'acqua", pack: "Flacone 1L", isKg: false },
-                    { name: "Fungicida Anti-Pythium (Cyazofamid)", doseHa: 3.0, waterHa: 500, descDose: "3 L/ha (0.3 ml/mq) in 300-500 l d'acqua", pack: "Flacone 0.5L", isKg: false },
-                    { name: "Plazma (Azoxystrobin)", doseHa: 1.0, waterHa: 500, descDose: "1 L/ha (0.1 ml/mq) in 200-500 l d'acqua", pack: "Flacone 1L", isKg: false },
-                    { name: "Dedicate (Tebuconazolo + Trifloxystrobin)", doseHa: 1.0, waterHa: 450, descDose: "1 L/ha (0.1 ml/mq) in 400-500 l d'acqua", pack: "Flacone 0.25L", isKg: false }
+                    { name: "Heritage (Azoxystrobin)", doseHa: 0.5, waterHa: 450, descDose: "0.5 kg/ha (0.05 g/mq) in 300-600 l d'acqua", pack: "Flacone 100g", packSizeNum: 100, isKg: true },
+                    { name: "Instrata Elite (Fludioxonil + Difenconazolo)", doseHa: 3.0, waterHa: 425, descDose: "3 L/ha (0.3 ml/mq) in 250-600 l d'acqua", pack: "Flacone 1L", packSizeNum: 1000, isKg: false },
+                    { name: "Fungicida Anti-Pythium (Cyazofamid)", doseHa: 3.0, waterHa: 500, descDose: "3 L/ha (0.3 ml/mq) in 300-500 l d'acqua", pack: "Flacone 0.5L", packSizeNum: 500, isKg: false },
+                    { name: "Plazma (Azoxystrobin)", doseHa: 1.0, waterHa: 500, descDose: "1 L/ha (0.1 ml/mq) in 200-500 l d'acqua", pack: "Flacone 1L", packSizeNum: 1000, isKg: false },
+                    { name: "Dedicate (Tebuconazolo + Trifloxystrobin)", doseHa: 1.0, waterHa: 450, descDose: "1 L/ha (0.1 ml/mq) in 400-500 l d'acqua", pack: "Flacone 0.25L", packSizeNum: 250, isKg: false }
                 ]
             },
             {
                 title: "AGROFARMACI: FUNGICIDI GRANULARI",
                 type: "granular_app",
                 products: [
-                    { name: "Player GR (Tebuconazolo 0,7%)", doseHa: 62.5, app: "A secco + Irrigare", descDose: "55-70 kg/ha (5.5 g/mq)", pack: "Sacco 7kg" }
+                    { name: "Player GR (Tebuconazolo 0,7%)", doseHa: 62.5, app: "A secco + Irrigare", descDose: "55-70 kg/ha (5.5 g/mq)", pack: "Sacco 7kg", packSizeNum: 7000 }
                 ]
             },
             {
                 title: "AGROFARMACI: ERBICIDI LIQUIDI",
                 type: "liquid",
                 products: [
-                    { name: "Warm-Up® 100 (Mesotrione)", doseHa: 1.5, waterHa: 400, descDose: "1,5 L/ha (0.15 ml/mq) in 400 l d'acqua", pack: "Flacone 500ml", isKg: false },
-                    { name: "Dicotex (Selettivo Foglia Larga)", doseHa: 5, waterHa: 400, descDose: "5 L/ha (0.5 ml/mq)", pack: "Flacone 1L", isKg: false },
-                    { name: "Overtake (Fluroxipir + Florasulam)", doseHa: 2.0, waterHa: 400, descDose: "2 L/ha (0.2 ml/mq) in 400 l d'acqua", pack: "Flacone 1L", isKg: false },
-                    { name: "Valdor expert (Iodosulfuron + Difluofenican)", doseHa: 0.33, waterHa: 500, descDose: "0.33 Kg/ha (0.033 g/mq) in 500 l d'acqua", pack: "Flacone 500g", isKg: true }
+                    { name: "Warm-Up® 100 (Mesotrione)", doseHa: 1.5, waterHa: 400, descDose: "1,5 L/ha (0.15 ml/mq) in 400 l d'acqua", pack: "Flacone 500ml", packSizeNum: 500, isKg: false },
+                    { name: "Dicotex (Selettivo Foglia Larga)", doseHa: 5, waterHa: 400, descDose: "5 L/ha (0.5 ml/mq)", pack: "Flacone 1L", packSizeNum: 1000, isKg: false },
+                    { name: "Overtake (Fluroxipir + Florasulam)", doseHa: 2.0, waterHa: 400, descDose: "2 L/ha (0.2 ml/mq) in 400 l d'acqua", pack: "Flacone 1L", packSizeNum: 1000, isKg: false },
+                    { name: "Valdor expert (Iodosulfuron + Difluofenican)", doseHa: 0.33, waterHa: 500, descDose: "0.33 Kg/ha (0.033 g/mq) in 500 l d'acqua", pack: "Flacone 500g", packSizeNum: 500, isKg: true }
                 ]
             },
             {
                 title: "AGROFARMACI: ERBICIDI ANTIGERMINELLI GRANULARI",
                 type: "granular_app",
                 products: [
-                    { name: "Ready Germiplus (Pendimetalin)", doseHa: 70.0, app: "A secco (Spaglio)", descDose: "60-80 kg/ha (7 g/mq)", pack: "Sacco 7kg" },
-                    { name: "PotClean Ultra 1G (Oxyfluorfen)", doseHa: 125.0, app: "A secco (Spaglio)", descDose: "100-150 kg/ha (12.5 g/mq)", pack: "Sacco 7kg" }
+                    { name: "Ready Germiplus (Pendimetalin)", doseHa: 70.0, app: "A secco (Spaglio)", descDose: "60-80 kg/ha (7 g/mq)", pack: "Sacco 7kg", packSizeNum: 7000 },
+                    { name: "PotClean Ultra 1G (Oxyfluorfen)", doseHa: 125.0, app: "A secco (Spaglio)", descDose: "100-150 kg/ha (12.5 g/mq)", pack: "Sacco 7kg", packSizeNum: 7000 }
                 ]
             },
             {
                 title: "AGROFARMACI: INSETTICIDI LIQUIDI",
                 type: "liquid",
                 products: [
-                    { name: "Acelepryn® 200 SC (Chlorantraniliprole)", doseHa: 0.6, waterHa: 500, descDose: "0,6 L/ha (0.06 ml/mq) in 500 l d'acqua", pack: "Flacone 600ml", isKg: false }
+                    { name: "Acelepryn® 200 SC (Chlorantraniliprole)", doseHa: 0.6, waterHa: 500, descDose: "0,6 L/ha (0.06 ml/mq) in 500 l d'acqua", pack: "Flacone 600ml", packSizeNum: 600, isKg: false }
                 ]
             },
             {
                 title: "REGOLATORI DI CRESCITA (PGR)",
                 type: "liquid",
                 products: [
-                    { name: "Primo Maxx II (Trinexapac-ethyl)", doseHa: 1.6, waterHa: 300, descDose: "1,6 L/ha (0.16 ml/mq) in 300 l d'acqua", pack: "Flacone 1L", isKg: false }
+                    { name: "Primo Maxx II (Trinexapac-ethyl)", doseHa: 1.6, waterHa: 300, descDose: "1,6 L/ha (0.16 ml/mq) in 300 l d'acqua", pack: "Flacone 1L", packSizeNum: 1000, isKg: false }
                 ]
             },
             {
                 title: "NUTRIZIONE: LINEA GREENMASTER LIQUID",
                 type: "liquid",
                 products: [
-                    { name: "Greenmaster Liquid Advance High N (33-0-0)", doseHa: 33.0, waterHa: 600, descDose: "35 L/ha (3.5 ml/mq) in 600 l d'acqua", pack: "Tanica 10L", isKg: false },
-                    { name: "Greenmaster Liquid Advance NK (12.5-0-12.4)", doseHa: 35.0, waterHa: 600, descDose: "35 L/ha (3.5 ml/mq) in 600 l d'acqua", pack: "Tanica 10L", isKg: false },
-                    { name: "Greenmaster Liquid Effect Iron (Fe)", doseHa: 20.0, waterHa: 600, descDose: "20 L/ha (2 ml/mq) in 600 l d'acqua", pack: "Tanica 10L", isKg: false },
-                    { name: "Greenmaster Liquid Advance CalMag (11.2-0-0 Calcio e Magnesio)", doseHa: 40.0, waterHa: 600, descDose: "40 L/ha (4 ml/mq) in 600 l d'acqua", pack: "Tanica 10L", isKg: false }
+                    { name: "Greenmaster Liquid Advance High N (33-0-0)", doseHa: 33.0, waterHa: 600, descDose: "35 L/ha (3.5 ml/mq) in 600 l d'acqua", pack: "Tanica 10L", packSizeNum: 10000, isKg: false },
+                    { name: "Greenmaster Liquid Advance NK (12.5-0-12.4)", doseHa: 35.0, waterHa: 600, descDose: "35 L/ha (3.5 ml/mq) in 600 l d'acqua", pack: "Tanica 10L", packSizeNum: 10000, isKg: false },
+                    { name: "Greenmaster Liquid Effect Iron (Fe)", doseHa: 20.0, waterHa: 600, descDose: "20 L/ha (2 ml/mq) in 600 l d'acqua", pack: "Tanica 10L", packSizeNum: 10000, isKg: false },
+                    { name: "Greenmaster Liquid Advance CalMag (11.2-0-0 Calcio e Magnesio)", doseHa: 40.0, waterHa: 600, descDose: "40 L/ha (4 ml/mq) in 600 l d'acqua", pack: "Tanica 10L", packSizeNum: 10000, isKg: false }
                 ]
             },
             {
                 title: "NUTRIZIONE AD AZIONE BIOSTIMOLANTE: LINEA VITALNOVA",
                 type: "liquid",
                 products: [
-                    { name: "Vitalnova Stressbuster (Antistress)", doseHa: 50.0, waterHa: 700, descDose: "50 L/ha (5 ml/mq) in 700 l d'acqua", pack: "Tanica 10L", isKg: false },
-                    { name: "Vitalnova SMX (Alghe Pure)", doseHa: 10.0, waterHa: 700, descDose: "10 L/ha (1 ml/mq) in 700 l d'acqua", pack: "Tanica 10L", isKg: false },
-                    { name: "Vitalnova Aminoboost (Amminoacidi)", doseHa: 10, waterHa: 700, descDose: "10 L/ha (1 ml/mq) in 700 l d'acqua", pack: "Tanica 10L", isKg: false },
-                    { name: "Vitalnova Blade (Radicale)", doseHa: 37.5, waterHa: 700, descDose: "37.5 L/ha (3.75 ml/mq) in 700 l d'acqua", pack: "Tanica 10L", isKg: false },
-                    { name: "Vitalnova SilK (silicato K)", doseHa: 20.0, waterHa: 700, descDose: "20 L/ha (2 ml/mq) in 700 l d'acqua", pack: "Tanica 10L", isKg: false }
+                    { name: "Vitalnova Stressbuster (Antistress)", doseHa: 50.0, waterHa: 700, descDose: "50 L/ha (5 ml/mq) in 700 l d'acqua", pack: "Tanica 10L", packSizeNum: 10000, isKg: false },
+                    { name: "Vitalnova SMX (Alghe Pure)", doseHa: 10.0, waterHa: 700, descDose: "10 L/ha (1 ml/mq) in 700 l d'acqua", pack: "Tanica 10L", packSizeNum: 10000, isKg: false },
+                    { name: "Vitalnova Aminoboost (Amminoacidi)", doseHa: 10, waterHa: 700, descDose: "10 L/ha (1 ml/mq) in 700 l d'acqua", pack: "Tanica 10L", packSizeNum: 10000, isKg: false },
+                    { name: "Vitalnova Blade (Radicale)", doseHa: 37.5, waterHa: 700, descDose: "37.5 L/ha (3.75 ml/mq) in 700 l d'acqua", pack: "Tanica 10L", packSizeNum: 10000, isKg: false },
+                    { name: "Vitalnova SilK (silicato K)", doseHa: 20.0, waterHa: 700, descDose: "20 L/ha (2 ml/mq) in 700 l d'acqua", pack: "Tanica 10L", packSizeNum: 10000, isKg: false }
                 ]
             },
             {
                 title: "GESTIONE IDRICA E COADIUVANTI",
                 type: "liquid",
                 products: [
-                    { name: "H2Pro TriSmart (Umettante Tre Azioni)", doseHa: 25.0, waterHa: 800, descDose: "25 L/ha (2.5 ml/mq) in 800 l d'acqua", pack: "Tanica 5L", isKg: false },
-                    { name: "H2Pro AquaSmart (Salva-acqua)", doseHa: 5.0, waterHa: 800, descDose: "5 L/ha (0.5 ml/mq) in 800 l d'acqua", pack: "Tanica 5L", isKg: false },
-                    { name: "H2Pro FlowSmart (Penetrante)", doseHa: 10.0, waterHa: 800, descDose: "10 L/ha (1 ml/mq) in 800 l d'acqua", pack: "Tanica 5L", isKg: false },
-                    { name: "Rider (Pigmento / Tracciante)", doseHa: 1.2, waterHa: 600, descDose: "1.2 L/ha (0.12 ml/mq) in 600 l d'acqua", pack: "Flacone 1L", isKg: false }
+                    { name: "H2Pro TriSmart (Umettante Tre Azioni)", doseHa: 25.0, waterHa: 800, descDose: "25 L/ha (2.5 ml/mq) in 800 l d'acqua", pack: "Tanica 5L", packSizeNum: 5000, isKg: false },
+                    { name: "H2Pro AquaSmart (Salva-acqua)", doseHa: 5.0, waterHa: 800, descDose: "5 L/ha (0.5 ml/mq) in 800 l d'acqua", pack: "Tanica 5L", packSizeNum: 5000, isKg: false },
+                    { name: "H2Pro FlowSmart (Penetrante)", doseHa: 10.0, waterHa: 800, descDose: "10 L/ha (1 ml/mq) in 800 l d'acqua", pack: "Tanica 5L", packSizeNum: 5000, isKg: false },
+                    { name: "Rider (Pigmento / Tracciante)", doseHa: 1.2, waterHa: 600, descDose: "1.2 L/ha (0.12 ml/mq) in 600 l d'acqua", pack: "Flacone 1L", packSizeNum: 1000, isKg: false }
                 ]
             }
         ];
@@ -297,8 +297,8 @@
 
                     if (cat.type === 'granular_app') {
                         formattedNet = totalProduct >= 1 ? totalProduct.toFixed(2) + " kg" : (totalProduct * 1000).toFixed(0) + " g";
-                        let packCount = Math.ceil(totalProduct / 7);
-                        packsElem.innerText = `${packCount} (Sacco 7kg)`;
+                        let packCount = Math.ceil((totalProduct * 1000) / prod.packSizeNum);
+                        packsElem.innerText = `${packCount} (${prod.pack})`;
                         waterElem.innerText = "A secco / Spaglio";
                     } else {
                         if (prod.isKg) {
@@ -314,17 +314,7 @@
                             waterElem.innerText = "A secco / N.D.";
                         }
 
-                        let unitCapacity = 1000;
-                        if(prod.pack.includes('500ml')) unitCapacity = 500;
-                        else if(prod.pack.includes('0.25L')) unitCapacity = 250;
-                        else if(prod.pack.includes('300ml')) unitCapacity = 300;
-                        else if(prod.pack.includes('100g')) unitCapacity = 100;
-                        else if(prod.pack.includes('10L')) unitCapacity = 10000;
-                        else if(prod.pack.includes('5L')) unitCapacity = 5000;
-                        else if(prod.pack.includes('1L')) unitCapacity = 1000;
-                        else if(prod.pack.includes('500g')) unitCapacity = 500;
-
-                        let realUnits = Math.ceil((totalProduct * 1000) / unitCapacity);
+                        let realUnits = Math.ceil((totalProduct * 1000) / prod.packSizeNum);
                         if (realUnits < 1) realUnits = 1;
 
                         packsElem.innerText = `${realUnits} (${prod.pack})`;
